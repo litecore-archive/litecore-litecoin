@@ -37,7 +37,7 @@ CDBWrapper::CDBWrapper(const boost::filesystem::path& path, size_t nCacheSize, b
     readoptions.verify_checksums = true;
     iteroptions.verify_checksums = true;
     iteroptions.fill_cache = false;
-    syncoptions.sync = true;  
+    syncoptions.sync = true;
     options = GetOptions(nCacheSize, compression, maxOpenFiles);
     options.create_if_missing = true;
     if (fMemory) {
