@@ -5,7 +5,6 @@
 
 #include "txdb.h"
 
-#include "main.h"
 #include "chainparams.h"
 #include "hash.h"
 #include "pow.h"
@@ -285,7 +284,7 @@ bool CBlockTreeDB::ReadTimestampIndex(const unsigned int &high, const unsigned i
         std::pair<char, CTimestampIndexKey> key;
         if (pcursor->GetKey(key) && key.first == DB_TIMESTAMPINDEX && key.second.timestamp < high) {
             if (fActiveOnly) {
-                if (blockOnchainActive(key.second.blockHash)) {
+                if (HashOnchainActive(key.second.blockHash)) {
                     hashes.push_back(std::make_pair(key.second.blockHash, key.second.timestamp));
                 }
             } else {
@@ -326,16 +325,6 @@ bool CBlockTreeDB::ReadFlag(const std::string &name, bool &fValue) {
     if (!Read(std::make_pair(DB_FLAG, name), ch))
         return false;
     fValue = ch == '1';
-    return true;
-}
-
-bool CBlockTreeDB::blockOnchainActive(const uint256 &hash) {
-    CBlockIndex* pblockindex = mapBlockIndex[hash];
-    
-    if (!chainActive.Contains(pblockindex)) {
-        return false;
-    }
-    
     return true;
 }
 
