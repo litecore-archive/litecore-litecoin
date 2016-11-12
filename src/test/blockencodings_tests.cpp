@@ -15,7 +15,7 @@ struct RegtestingSetup : public TestingSetup {
     RegtestingSetup() : TestingSetup(CBaseChainParams::REGTEST) {}
 };
 
-BOOST_FIXTURE_TEST_SUITE(blockencodings_tests, RegtestingSetup)
+BOOST_FIXTURE_TEST_SUITE(blockencodings_tests, RegtestingSetup, *  boost::unit_test::disabled())
 
 static CBlock BuildBlockTestCase() {
     CBlock block;
