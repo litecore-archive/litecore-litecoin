@@ -158,7 +158,7 @@ class AddressIndexTest(BitcoinTestFramework):
         tx = CTransaction()
         tx.vin = [CTxIn(COutPoint(int(spending_txid, 16), 0))]
         send_amount = 1 * 100000000 + 12840
-        change_amount = amount - send_amount - 10000
+        change_amount = amount - send_amount - 100000
         tx.vout = [CTxOut(change_amount, scriptPubKey2), CTxOut(send_amount, scriptPubKey)]
         tx.rehash()
 
@@ -279,7 +279,7 @@ class AddressIndexTest(BitcoinTestFramework):
             CTxIn(COutPoint(int(memtxid2, 16), 0)),
             CTxIn(COutPoint(int(memtxid2, 16), 1))
         ]
-        tx.vout = [CTxOut(int(amount / 2 - 10000), scriptPubKey2)]
+        tx.vout = [CTxOut(int(amount / 2 - 100000), scriptPubKey2)]
         tx.rehash()
         self.nodes[2].importprivkey(privKey3)
         signed_tx3 = self.nodes[2].signrawtransaction(binascii.hexlify(tx.serialize()).decode("utf-8"))
@@ -310,7 +310,7 @@ class AddressIndexTest(BitcoinTestFramework):
         tx.vin = [
             CTxIn(COutPoint(int(utxos[0]["txid"], 16), utxos[0]["outputIndex"]))
         ]
-        amount = int(utxos[0]["satoshis"] - 1000)
+        amount = int(utxos[0]["satoshis"] - 100000)
         tx.vout = [CTxOut(amount, address1script)]
         tx.rehash()
         self.nodes[0].importprivkey(privkey1)

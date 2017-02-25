@@ -46,7 +46,7 @@ class SpentIndexTest(BitcoinTestFramework):
         # Check that
         print("Testing spent index...")
 
-        feeSatoshis = 10000
+        feeSatoshis = 100000
         privkey = "cSdkPxkAjA4HDr5VHgsebAPDEh9Gyub4HK8UJr2DFGGqKKy4K5sG"
         address = "mgY65WSfEmsyYaYPQaXhmXMeBhwp4EcsQW"
         addressHash = bytes([11,47,10,12,49,191,224,64,107,12,204,19,129,253,190,49,25,70,218,220])
