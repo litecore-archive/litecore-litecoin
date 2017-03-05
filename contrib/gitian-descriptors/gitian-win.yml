@@ -1,5 +1,5 @@
 ---
-name: "litecoin-win-0.13"
+name: "litecore-litecoin-win-0.13"
 enable_cache: true
 suites:
 - "trusty"
@@ -22,7 +22,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/litecoin-project/litecoin.git"
+- "url": "https://github.com/litecoin-project/litecore-litecoin.git"
   "dir": "litecoin"
 files: []
 script: |
