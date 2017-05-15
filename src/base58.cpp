@@ -285,7 +285,8 @@ bool CBitcoinAddress::GetIndexKey(uint160& hashBytes, int& type) const
         memcpy(&hashBytes, &vchData[0], 20);
         type = 1;
         return true;
-    } else if (vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS)) {
+    } else if (vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS) ||
+               vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS2)) {
         memcpy(&hashBytes, &vchData[0], 20);
         type = 2;
         return true;
